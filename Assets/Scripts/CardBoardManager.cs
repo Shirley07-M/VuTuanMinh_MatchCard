@@ -39,7 +39,7 @@ public class CardBoardManager : MonoBehaviour
 
         for (int i = cardDataBoard.Count - 1; i > 0; i--)
         {
-            int randomCardIndex = Random.Range(0, i + 1); // hàm random lấy từ a đến b - 1, nên phải truyền i + 1
+            int randomCardIndex = Random.Range(0, i + 1); // hàm random lấy trong [a;b) nên phải truyền i + 1
 
             (cardDataBoard[i], cardDataBoard[randomCardIndex]) = (cardDataBoard[randomCardIndex], cardDataBoard[i]);
         }
