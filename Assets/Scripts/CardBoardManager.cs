@@ -1,6 +1,4 @@
-﻿using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -10,7 +8,7 @@ public class CardBoardManager : MonoBehaviour
     public static CardBoardManager Instance { get; private set; }
 
     [SerializeField] private Transform cardContainer;
-    [SerializeField] private CardController card;
+    [SerializeField] private CardController cardPrefab;
 
     private List<CardController> selectedCard;
 
@@ -49,7 +47,7 @@ public class CardBoardManager : MonoBehaviour
 
         foreach (var cardData in cardDataBoard)
         {
-            CardController currentCard = Instantiate(card, cardContainer);
+            CardController currentCard = Instantiate(cardPrefab, cardContainer);
             currentCard.OnCardSelected += OnCardSelected;
             currentCard.setID(cardData.pairID);
             currentCard.setClubName(cardData.clubName);
