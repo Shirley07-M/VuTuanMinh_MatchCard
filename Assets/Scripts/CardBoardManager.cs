@@ -49,10 +49,8 @@ public class CardBoardManager : MonoBehaviour
         {
             CardController currentCard = Instantiate(cardPrefab, cardContainer);
             currentCard.OnCardSelected += OnCardSelected;
-            currentCard.setID(cardData.pairID);
-            currentCard.setClubName(cardData.clubName);
-            currentCard.setLogo(cardData.clubLogo);
-            currentCard.setKnowledge(cardData.knowledgeDescription);
+            
+            currentCard.SetCardData(cardData.pairID, cardData.clubName, cardData.clubLogo, cardData.knowledgeDescription);
         }
     }
 

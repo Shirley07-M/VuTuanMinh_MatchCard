@@ -17,10 +17,10 @@ public class CardController : MonoBehaviour
     //! Vì biến này chỉ tạo 1 lần rồi thôi - dùng chung cho cả 24 card, nên phải static để tạo đúng 1 lần, 24 lá bài đều đc dùng luôn
     //* Nếu ko static, mỗi lá bài đc Instantiate ra sẽ phải chạy lại dòng này, gây thừa thãi.
 
-    public int id {  get; private set; }    public void setID(int id) => this.id = id;
-    public string clubName { get; private set; }   public void setClubName(string clubName) => this.clubName = clubName;
-    [SerializeField] private Image logo;    public void setLogo(Sprite logo) => this.logo.sprite = logo;
-    public string knowledgeDescription { get; private set; }    public void setKnowledge(string knowledge)  => this.knowledgeDescription = knowledge;
+    public int id {  get; private set; }  
+    public string clubName { get; private set; }  
+    [SerializeField] private Image logo;  
+    public string knowledgeDescription { get; private set; }   
 
     public event Action<CardController> OnCardSelected;
 
@@ -39,6 +39,17 @@ public class CardController : MonoBehaviour
         OnCardSelected = null;
     }
 
+    public void SetCardData(int id, string clubName, Sprite logo, string knowledge)
+    {
+        this.id = id;
+        this.clubName = clubName;
+        if (logo != null)
+        {
+            this.logo.sprite = logo;
+            this.logo.preserveAspect = true;
+        }
+        this.knowledgeDescription = knowledge;
+    }
     public void SetAfterMatched()
     {
         canvasGroup.blocksRaycasts = false;
